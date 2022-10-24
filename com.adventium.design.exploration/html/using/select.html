@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Select Design</title>
+</head>
+
+<body>
+<h1>Select Design</h1>
+<p>
+Once the Design Space Explorer view has been opened, the (top-level) system implementation must be chosen.
+</p>
+<p>
+First the AADL source file (ending .aadl) containing the desired system implementation text must be opened.  
+If you don't know which system implementation to use, then use OSATE to explore the AADL architecture models.
+</p>
+<p>
+When you have the file opened in the OSATE editor, the outline will appear in the outline view 
+which is customarily on the right hand side.  Right-click on the name of the system implementation that 
+will be the top-level of the design space to explore.  This brings up a context-sensitive menu.
+Choose "Choose system implementation for design exploration".
+</p>
+<p>
+The Design Space Explorer view will show a tree representing the design space 
+of the selected system implementation.
+</p>
+<img src="empty_tree.png" width="600"/>
+
+<p>
+The small triangle containing an exclamation point indicates there remain unchosen implementations in its subtree.
+</p>
+
+<p>
+Check the box of the implementations 
+in the design you want to analyze.
+</p>
+<img src="checked_tree.png" width="600"/>
+
+<p>
+Click on the <img src="../../icons/config_obj.gif" width="20"/> to create an instance model file for analysis.
+An <tt>.aaxl</tt> file will be created in the "instances" folder.
+</p>
+
+<p>
+Also, a configuration file will be created in the "signature" folder of the "Configuration" 
+project which can be used to re-create the instance model file.
+</p>
+
+
+<p>
+Next:  <a href="../using/readsignature.html">Read Signature File</a>
+</p>
+
+
+</body>
+</html>

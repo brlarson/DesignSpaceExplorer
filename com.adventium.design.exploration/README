@@ -1,0 +1,42 @@
+--------------------------------------------------------------------------
+Copyright 2021 Adventium Enterprises, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--------------------------------------------------------------------------
+
+All of the work to make an instance model (or corresponding configuration file) is done in:
+com.adventium.design.exploration.views.ConfigNode.java
+
+ConfigNode extends RadioTreeNode for the radio-button behavior of tree in the Design Space Explorer view.
+
+Generation of all or a subset of possible configurations works by manipulating whether this ConfigNode 
+in the tree is "checked" in the check-box tree opened in the Design Space Explorer view.
+
+So all multiple configuration (either all or subset) pretends like it was selected by the user manually.
+(The lazy developer who coaxed OSATE into generating custom instance models just reused the manual mechanism for multiple configuration generation.)
+
+That's what all the "setFirst" and "getNext" does.  
+  setFirst chooses the "first" implementation whenever it gets a choice.
+  getNext moves the deepest check-box to the next implementation.
+  
+The trick is that when it's the last leaf choice, it tells its parent.  
+When that parent moves to the following implementation it calls setFirst to initialize check-boxes on the new choice.
+
+Subset trees (used for subset of design space configuration generation) pay attention to any manually-checked boxes.
+
+The Eclipse preference page value for limit on number of instances auto-generated is in com.adventium.design.exploration.ui.preferences
+fetch the value by:  int configLimit = WorkspacePlugin.getDefault().getPreferenceStore().getInt(ConfigurationPreferencePage.CONFIGURATION_LIMIT);
+
+The com.adventium.design.exploration.handlers.*Handler.java do the real work.
+
+The Eclipse Properties live in com.adventium.design.exploration.ui.preferences.ConfigurationPreferencePage.java

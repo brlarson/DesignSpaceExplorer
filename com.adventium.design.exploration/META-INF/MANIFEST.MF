@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: com.adventium.design.exploration
+Bundle-ManifestVersion: 2
+Bundle-Name: Design Space Explorer
+Bundle-SymbolicName: com.adventium.design.exploration;singleton:=true
+Bundle-Version: 1.0.1.qualifier
+Bundle-Activator: com.adventium.design.exploration.ConfigurationActivator
+Bundle-Vendor: Adventium Labs
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.osate.aadl2.instantiation;bundle-version="1.0.0",
+ org.osate.aadl2.modelsupport;bundle-version="1.0.0",
+ org.osate.aadl2;bundle-version="1.0.0",
+ org.osate.ui;bundle-version="1.0.0",
+ org.eclipse.ui.navigator;bundle-version="3.5.401",
+ org.osate.xtext.aadl2.ui;bundle-version="1.0.0",
+ org.apache.log4j;bundle-version="1.2.15",
+ org.eclipse.draw2d;bundle-version="3.9.101",
+ org.eclipse.emf.common,
+ org.eclipse.emf.transaction,
+ org.eclipse.ui.console;bundle-version="3.9.200"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: com.adventium.design.exploration.radio_tree

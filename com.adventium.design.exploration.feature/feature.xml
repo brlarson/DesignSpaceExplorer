@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.adventium.design.exploration.feature"
+      label="Design Space Explorer"
+      version="1.0.1.qualifier"
+      provider-name="Adventium Enterprises, LLC">
+
+   <description url="http://www.example.com/description">
+      Design Space Explorer (DSE) generates instance models from declarative models.
+OSATE does this too, but requires implementations all the way down.
+
+AADL allows subcomponents to be types, that may have several implementations.
+However, AADL will not generate an instance model needed for many analysis tools,
+and especially, verification condition generation by the BLESS Proof Tool.
+
+DSE provides a checkbox tree so a user can select which implementations are 
+desired when subcomponents are types.
+
+These configurations can be saved and recalled so the user doesn&apos;t need to check 
+boxes every time DSE is used.
+
+In addition, when a property set contains *only* property constants having
+aadlinteger type, DSE will allow you to change them.  This was included 
+especially for component and port array sizes to allow different parts of the 
+system to have different levels of redundancy for fault tolerance tradeoff
+analysis.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      --------------------------------------------------------------------------
+Copyright 2021 Adventium Enterprises, LLC
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--------------------------------------------------------------------------
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      --------------------------------------------------------------------------
+Copyright 2021 Adventium Enterprises, LLC
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--------------------------------------------------------------------------
+   </license>
+
+   <plugin
+         id="com.adventium.design.exploration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

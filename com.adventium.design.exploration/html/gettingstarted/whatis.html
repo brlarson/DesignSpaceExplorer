@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>What Is Design Space Explorer (DSE)?</title>
+</head>
+
+<body>
+<h1>What Is Design Space Explorer (DSE)?</h1>
+<p>
+Design Space Explorer (DSE) is a plug-in to OSATE for selecting particular designs from an AADL architecture model that defines a design space.
+</p>
+<p>
+Usually, AADL architecture models define a single product.  There is a single, top-level system implementation file from which OSATE can generate
+instance model files (ending in .aaxl2) with which various analysis tools can be used.  For this to work, all subcomponents of implementations must themselves be implementations.
+</p>
+<p>
+However, AADL allows component types to have multiple implementations.  Because each of the multiple implementations has the same type, they are exactly the same externally.
+When used as subcomponents, either could be used.  Suppose two (otherwise identical) processors could be used: one hot and fast
+(<tt>Cpu.fast</tt>), the other cool and slow (<tt>Cpu.low_power</tt>).
+</p>
+<p>
+Before Design Space Explorer (DSE) generating instance model files for each choice of processor required not just duplication of the implementation that has the processor as a subcomponent, 
+but duplications of all implementations up to the top-level system implementation.  
+While duplicating instance models all the way down may be acceptable when a single component type has two possible implementations, 
+it becomes and error-prone organizational nightmare when considering multiple implementations of multiple types.  
+</p>
+<code>
+<pre>
+system Top
+end Top;
+
+--system with fast cpu
+system implementation Top.impl1
+  subcomponents
+  	chip: processor Cpu.fast;
+end Top.impl1;
+
+--system with low-power cpu
+system implementation Top.impl2
+  subcomponents
+  	chip: processor Cpu.low_power;
+end Top.impl2;
+
+processor Cpu
+end Cpu;
+
+processor implementation Cpu.fast		
+	properties
+		Physical_Properties::Power=>200.0 mW;
+end  Cpu.fast;					
+
+processor implementation Cpu.low_power	
+	properties
+		Physical_Properties::Power=>100.0 mW;
+end  Cpu.low_power;					
+</pre>
+</code>
+<p>
+AADL itself allows subcomponents to be either types, or implementations.
+</p>
+<code>
+<pre>
+--system with just cpu type
+system implementation Top.impl
+  subcomponents
+  	chip: processor Cpu;
+end Top.impl;
+</pre>
+</code>
+<p>
+Choosing <tt>Top.impl</tt> with OSATE to make an instance model, does not make a choice for subcomponent <tt>chip</tt>.  Rather it uses the component type.  
+Most AADL analysis tools insist on implementations all the way down, and in this case a power-consumption analysis would not know what value to use for <tt>Cpu</tt>.
+</p>
+<p>
+Design Space Explorer allow selection of implementation for subcomponent types.  
+Thus the AADL architecture model itself can remain coherent and compact, yet define a design space of alternatives which can be analyzed.
+</p>
+<p>
+Next:  <a href="openview.html">Open Design Space Explorer View</a>
+</p>
+
+</body>
+</html>

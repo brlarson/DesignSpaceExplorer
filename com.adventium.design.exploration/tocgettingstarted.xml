@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Getting Started with Design Space Explorer (DSE)" link_to="toc.xml#gettingstarted"> 
+	<topic label="What is Design Space Explorer (DSE)?" href="html/gettingstarted/whatis.html">
+	</topic> 
+	<topic label="Open Design Space Explorer (DSE) View"  href="html/gettingstarted/openview.html"> 
+	</topic>
+	<topic label="Choose System Implementation"  href="html/gettingstarted/choose.html"> 
+	</topic>
+</toc>

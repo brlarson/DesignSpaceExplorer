@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="AADL"
+            id="aadl.view_category">
+      </category>
+      <view
+            name="Design Space Explorer"
+            icon="icons/config_obj.gif"
+            category="com.adventium"
+            class="com.adventium.design.exploration.views.ConfigurationView"
+            id="com.adventium.views.ConfigurationView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="com.adventium.views.ConfigurationView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+    <extension point="org.eclipse.ui.menus">
+    <!-- in editor window -->
+         <menuContribution
+		 allPopups="false"
+         locationURI="popup:#TextEditorContext?after=additions">
+        <command commandId="com.adventium.choose"
+		 tooltip="Instantiate Selected Design" 
+		 style="push">
+         <visibleWhen checkEnabled="false">
+               <reference
+                     definitionId="org.osate.xtext.aadl2.Aadl2.Editor.opened">
+               </reference>
+         </visibleWhen>
+        </command>
+      </menuContribution> 
+    <!-- in editor outline -->
+		<menuContribution 
+		allPopups="false"
+		locationURI="popup:org.osate.xtext.aadl2.ui.outline?after=additions">
+		<command
+        commandId="com.adventium.choose"
+        icon="icons/config_obj.gif"
+        style="push">
+		         <visibleWhen checkEnabled="false">
+
+         </visibleWhen>
+		</command>
+	</menuContribution>
+    <!-- in navigator -->
+       <menuContribution
+            locationURI="popup:org.osate.ui.navigator.AadlNavigator">
+         <command
+		commandId="com.adventium.instantiate"
+               label="Reinstantiate Design"
+		tooltip="Reinstantiate Design" 
+               style="push">
+         </command>
+      </menuContribution>
+       <menuContribution
+             allPopups="false"
+             locationURI="toolbar:com.adventium.views.ConfigurationView">
+          <command
+                commandId="com.adventium.instantiate"
+                icon="icons/config_obj.gif"
+                label="Instantiate Chosen Design"
+                style="push">
+          </command>
+       </menuContribution>
+       <menuContribution
+             allPopups="false"
+             locationURI="toolbar:com.adventium.views.ConfigurationView">
+          <command
+                commandId="com.adventium.readsignaturefile"
+                icon="icons/read_obj.gif"
+                label="Read Configuration Signature File"
+                style="push">
+          </command>
+       </menuContribution>
+       <menuContribution
+             allPopups="false"
+             locationURI="toolbar:com.adventium.views.ConfigurationView">
+          <command
+                commandId="com.adventium.allconfig"
+                icon="icons/config_all.gif"
+                label="All Configurations"
+                style="push">
+          </command>
+       </menuContribution>
+       <menuContribution
+             allPopups="false"
+             locationURI="menu:org.osate.ui.osateMenu">
+             <menu
+                   id="org.osate.dse.menu"
+                   label="Design Space Explorer">
+                <command
+                      commandId="com.adventium.design.exploration.arraysizes"
+                      style="push">
+                </command>
+             </menu>
+       </menuContribution>
+       <menuContribution
+             allPopups="false"
+             locationURI="toolbar:com.adventium.views.ConfigurationView">
+          <command
+                commandId="com.adventium.subsetconfig"
+                icon="icons/config_subset.gif"
+                label="Subset of All Configurations"
+                style="push">
+          </command>
+       </menuContribution>
+   </extension> 
+
+  	<!-- Instantiate -->
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+        defaultHandler="com.adventium.design.exploration.handlers.ConfigureHandler"
+        description="Create instance model for design"
+        id="com.adventium.instantiate"
+        name="Instantiate Configuration">
+		</command>
+  <command
+        defaultHandler="com.adventium.design.exploration.handlers.ChooseHandler"
+        id="com.adventium.choose"
+        name="Choose system implementation for design exploration">
+  </command>
+  <command
+        defaultHandler="com.adventium.design.exploration.handlers.LoadSignatureHandler"
+        description="Read existing design signature file"
+        id="com.adventium.readsignaturefile"
+        name="Read Signature File">
+  </command>
+  <command
+        defaultHandler="com.adventium.design.exploration.handlers.DaPlaneHandler"
+        description="Calculate X-Y coordinates for signatures"
+        id="com.adventium.daplane"
+        name="Da Plane!  Da Plane!">
+  </command>
+  <command
+        defaultHandler="com.adventium.design.exploration.handlers.AllConfigHandler"
+        description="Generate all possible design signatures"
+        id="com.adventium.allconfig"
+        name="All Configurations">
+  </command>
+  <command
+        defaultHandler="com.adventium.design.exploration.handlers.SubsetConfigHandler"
+        description="Generate the unchecked subset of all possible design signatures"
+        id="com.adventium.subsetconfig"
+        name="Subset of All Configurations">
+  </command>
+  <command
+        defaultHandler="com.adventium.design.exploration.handlers.SetArrayProperties"
+        id="com.adventium.design.exploration.arraysizes"
+        name="Set Array Size Property Constants">
+  </command>
+	</extension>
+ <extension
+       point="org.eclipse.ui.preferencePages">
+    <page
+          category="org.osate.internal.ui.preferences.OsatePreferencePage"
+          class="com.adventium.design.exploration.ui.preferences.ConfigurationPreferencePage"
+          id="org.aadl.design.exploration.preferences"
+          name="Design Space Explorer">
+    </page>
+ </extension>
+ <extension
+       point="org.eclipse.core.runtime.preferences">
+    <initializer
+          class="com.adventium.design.exploration.ui.preferences.PreferenceInitializer">
+    </initializer>
+ </extension>
+ <extension
+       point="org.eclipse.help.toc">
+    <toc
+          file="toc.xml"
+          primary="true">
+    </toc>
+    <toc
+          file="tocgettingstarted.xml">
+    </toc>
+    <toc
+          file="tocusing.xml">
+    </toc>
+    <toc
+          file="toccredits.xml">
+    </toc>
+ </extension>
+
+</plugin>

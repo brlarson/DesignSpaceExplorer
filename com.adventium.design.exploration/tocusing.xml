@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Using Designe Space Explorer (DSE)" link_to="toc.xml#using"> 
+	<topic label="Select Design"  href="html/using/select.html"> 
+	</topic>
+	<topic href="html/using/readsignature.html" label="Read Signature File">
+	</topic>
+ <topic href="html/using/makeall.html" label="Make All Signatures">
+ </topic>
+ <topic href="html/using/makesubset.html" label="Make Signature Subset">
+ </topic> 
+</toc>

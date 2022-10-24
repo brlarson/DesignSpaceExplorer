@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Design Space Explorer (DSE)</title>
+</head>
+
+<body>
+<h1>DSE makes selected AADL instance models.</h1>
+
+<p>
+The Architecture Analysis and Design Language (AADL) expresses systems-engineering models of embedded computer systems.  
+AADL models computer systems that control machines, particularly safety-critical machines such as aircraft, medical devices, and automobiles.
+More can be found about AADL at 
+<a href="http://aadl.info">AADL.info</a>.
+</p>
+
+<p>
+DSE is a plug-in to the Open-Source AADL Tool Environment (OSATE), which is a plug-in to Eclipse.  If you are reading this, you have both OSATE and DSE installed.
+</p>
+
+<p>
+One of the intents for AADL was to model families of devices that may be different, but related products using product-line engineering.  
+Alternatively, an AADL architecture specifies a range of design choices, that is narrowed as design proceeds.  
+A space-craft has limits for volume, mass, and power for which trade-offs are made.
+</p>
+
+<p>
+People write AADL <i>declarative</i> models with a text editor, graphical editor, or most likely, both.  A declarative model may define a design space.
+An AADL <i>instance</i> model represents a particular design choice.  Almost all of the AADL architecture analysis tools apply to instance models.
+</p>
+
+<p>
+OSATE can generate instance models from declarative models by selecting (right click) a system <i>implementation</i> in the context menu. 
+However, the selected component must have "implementations all the way down".
+</p>
+
+<p>
+DSE provides selection of implementations of subcomponent types (when more than one is available), and choice of array sizes when 
+defined as property constants in property sets.
+</p>
+
+<p>
+<a href="gettingstarted/whatis.html">What is Design Space Explorer (DSE)?</a>
+</p>
+
+<p>
+<a href="using/select.html">Using Design Space Explorer (DSE)</a>
+</p>
+
+
+</body>
+</html>
